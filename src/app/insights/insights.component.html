@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col d-flex justify-content-center final-insight-amount">
+      <div class="insight-box">
+        <div id="wallet-pic">
+          <img src="../../assets/img/wallet.png" alt="">
+        </div>
+        <span style="font-size: 37px;">Rs</span>
+        {{ earningInsight + receivingInsight - expenseInsight - payingInsight }}
+      </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div class="insight-card ic-exp">
+        <span class="amt"><span class="rs">Rs.</span>  {{ expenseInsight }}</span>
+        <span class="title">Expense</span>
+        <div class="icon"></div>
+        
+      </div>
+     
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="insight-card ic-ear">
+        <span class="amt"><span class="rs">Rs.</span>  {{ earningInsight }}</span>
+        <span class="title">Earning</span>
+        <div class="icon"></div>
+        
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+    <div class="insight-card ic-rec">
+      <span class="amt"><span class="rs">Rs.</span>  {{ receivingInsight }}</span>
+      <span class="title"> Receiving</span>
+      <div class="icon"></div>
+     
+    </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="insight-card ic-pay">
+        <span class="amt"><span class="rs">Rs.</span>  {{ payingInsight }}</span>
+        <span class="title">Paying</span>
+        <div class="icon"></div>
+        
+      </div>
+    </div>
+</div>

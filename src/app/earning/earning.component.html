@@ -1,0 +1,104 @@
+
+<div class="card earning-card">
+    <div class="card-title">
+        <h4>Earning Details</h4>
+        <div class="card-action">
+            <div class="card-total">
+                
+                Rs. {{ totalEarning   }}
+            </div>
+            <button class="btn btn-info btn-add" data-toggle="modal" data-target="#earningFormModal">Add</button>
+        </div>
+    </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let earning of earnings">
+
+        
+
+        <div class="list-item-left">
+            <span class="trans-purpose">
+                {{ earning.source }}
+            </span>
+        
+            <span class="trans-date">
+              {{ earning.date.toDate() | date:'mediumDate'}}
+            </span>
+
+        </div>
+        <span class="list-item-amt">
+            {{ earning.amount | currency:'Rs. ' }}
+        </span>
+
+    </li>
+ 
+      
+  </ul>
+  
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="earningFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">
+          Add a new Earning
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- --------------------------------------------Form----------------------------------- -->
+
+ <form #earningForm="ngForm" (ngSubmit)="onSubmit(earningForm)">
+  <div class="form-group">
+    <label>
+      Earned From:
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="source" 
+        [(ngModel)]="earning.source"
+        #earningSource="ngModel"
+        required
+        minlength="2"
+      />
+    </label>
+  </div>
+
+  
+
+
+  <div class="form-group">
+    <label>
+      Amount
+      <input
+        required
+        type="number"
+        class="form-control"
+        name="amount" 
+        [(ngModel)]="earning.amount"
+        #earningAmount="ngModel"
+      />
+    </label>
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="!earningForm.dirty"
+    class="btn btn-primary">
+    
+    Submit
+  </button>
+</form> 
+      </div>
+      
+    </div>
+  </div>
+</div>
+

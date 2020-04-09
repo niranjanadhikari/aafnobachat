@@ -1,0 +1,102 @@
+
+<div class="card paying-card">
+    <div class="card-title">
+        <h4>Paying to</h4>
+        <div class="card-action">
+            <div class="card-total">
+                
+               Rs. {{ totalPaying }}
+            </div>
+            <button class="btn btn-info btn-add" data-toggle="modal" data-target="#payingFormModal">Add</button>
+        </div>
+    </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let paying of payings">
+
+        
+
+        <div class="list-item-left">
+            <span class="trans-purpose">
+                {{ paying.person }}
+            </span>
+        
+            <span class="trans-date">
+              {{ paying.date.toDate() | date:'mediumDate'}}
+            </span>
+
+        </div>
+        <span class="list-item-amt">
+            {{ paying.amount | currency:'Rs. ' }}
+        </span>
+
+    </li>
+ 
+      
+  </ul>
+  
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="payingFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">list a new paying</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- --------------------------------------------Form----------------------------------- -->
+
+ <form #payingForm="ngForm" (ngSubmit)="onSubmit(payingForm)">
+  <div class="form-group">
+    <label>
+      Paying to:
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="person" 
+        [(ngModel)]="paying.person"
+        #payingPerson="ngModel"
+        required
+        minlength="2"
+      />
+    </label>
+  </div>
+
+  
+
+
+  <div class="form-group">
+    <label>
+      Amount
+      <input
+        required
+        type="number"
+        class="form-control"
+        name="amount" 
+        [(ngModel)]="paying.amount"
+        #payingAmount="ngModel"
+      />
+    </label>
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="!payingForm.dirty"
+    class="btn btn-primary">
+    
+    Submit
+  </button>
+</form> 
+      </div>
+      
+    </div>
+  </div>
+</div>
+

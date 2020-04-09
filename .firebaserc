@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "aafnobachat": {
+      "hosting": {
+        "aafnobachat": [
+          "aafnobachat"
+        ]
+      }
+    }
+  }
+}
